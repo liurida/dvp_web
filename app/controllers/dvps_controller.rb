@@ -81,11 +81,10 @@ class DvpsController < ApplicationController
     end
   end
 
-  # batch_create ec /dvps/1/ec_create
-  def ec_create
-    @dvp = Dvp.find(params[:id])
-  end
+  # batch_create ec /dvps/1/batch_ec
+  def batch_ec
 
+  end
   # copy action
   def ec_copy
     p 'in ec_copy'
@@ -95,7 +94,7 @@ class DvpsController < ApplicationController
 
     copy_ec_from(params[:dvp_id])
 
-
+    redirect_to ec_items_path
 
   end
 
