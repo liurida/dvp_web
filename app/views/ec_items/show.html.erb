@@ -60,14 +60,10 @@
   <%= @ec_item.modified_by %>
 </p>
 
-<p>
-  <b>Study:</b>
-  <%= Study.find(@ec_item.study_id).name %>
-</p>
 
 <p>
   <b>Dvp:</b>
-  <%= Dvp.find(@ec_item.dvp_id).name %>
+  <%= @ec_item.dvp.name %>
 </p>
 
 

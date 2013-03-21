@@ -1,4 +1,9 @@
 class Dvp < ActiveRecord::Base
   attr_accessible :desc, :name, :study_id
-  has_one :study
+  belongs_to :study
+  has_many :ec_items
+
+  def to_s
+    "#{self.study.name}-#{self.name}"
+  end
 end
