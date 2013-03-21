@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ec_item.name %>
+</p>
+
+<p>
+  <b>Proc name:</b>
+  <%= @ec_item.proc_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @ec_item.description %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @ec_item.message %>
+</p>
+
+<p>
+  <b>Restriction:</b>
+  <%= @ec_item.restriction %>
+</p>
+
+<p>
+  <b>Reviewer:</b>
+  <%= @ec_item.reviewer %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @ec_item.author %>
+</p>
+
+<p>
+  <b>Compiled status:</b>
+  <%= @ec_item.compiled_status %>
+</p>
+
+<p>
+  <b>Tested status:</b>
+  <%= @ec_item.tested_status %>
+</p>
+
+<p>
+  <b>Creation ts:</b>
+  <%= @ec_item.creation_ts %>
+</p>
+
+<p>
+  <b>Modification ts:</b>
+  <%= @ec_item.modification_ts %>
+</p>
+
+<p>
+  <b>Modified by:</b>
+  <%= @ec_item.modified_by %>
+</p>
+
+<p>
+  <b>Study:</b>
+  <%= Study.find(@ec_item.study_id).name %>
+</p>
+
+<p>
+  <b>Dvp:</b>
+  <%= Dvp.find(@ec_item.dvp_id).name %>
+</p>
+
+
+<%= link_to 'Edit', edit_ec_item_path(@ec_item) %> |
+<%= link_to 'Back', ec_items_path %>

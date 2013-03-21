@@ -1,0 +1,23 @@
+<%= simple_form_for(@ec_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :proc_name %>
+    <%= f.input :description %>
+    <%= f.input :restriction %>
+    <%= f.input :message %>
+    <%= f.input :reviewer %>
+    <%= f.input :author %>
+    <%= f.input :compiled_status %>
+    <%= f.input :tested_status %>
+    <%= f.input :modified_by %>
+    <%= f.association :study %>
+    <%= f.association :dvp %>
+   
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

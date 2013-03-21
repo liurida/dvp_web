@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  study: 
+  name: MyString
+  desc: MyString
+
+two:
+  study: 
+  name: MyString
+  desc: MyString

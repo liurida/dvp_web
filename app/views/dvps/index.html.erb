@@ -1,0 +1,27 @@
+<h1>Listing dvps</h1>
+
+<table>
+  <tr>
+    <th>Study</th>
+    <th>Name</th>
+    <th>Desc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dvps.each do |dvp| %>
+  <tr>
+    <td><%= Study.find(dvp.study_id).name %></td>
+    <td><%= dvp.name %></td>
+    <td><%= dvp.desc %></td>
+    <td><%= link_to 'Show', dvp %></td>
+    <td><%= link_to 'Edit', edit_dvp_path(dvp) %></td>
+    <td><%= link_to 'Destroy', dvp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dvp', new_dvp_path %>

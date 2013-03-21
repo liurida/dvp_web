@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  proc_name: MyString
+  description: MyString
+  message: MyString
+  reviewer: MyString
+  author: MyString
+  type: 
+  compiled_status: MyString
+  tested_status: MyString
+  creation_ts: MyString
+  modification_ts: MyString
+  modified_by: MyString
+  study: 
+  dvp: 
+
+two:
+  name: MyString
+  proc_name: MyString
+  description: MyString
+  message: MyString
+  reviewer: MyString
+  author: MyString
+  type: 
+  compiled_status: MyString
+  tested_status: MyString
+  creation_ts: MyString
+  modification_ts: MyString
+  modified_by: MyString
+  study: 
+  dvp: 

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @study.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @study.type %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @study.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_study_path(@study) %> |
+<%= link_to 'Back', studies_path %>

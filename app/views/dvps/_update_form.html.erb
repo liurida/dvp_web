@@ -1,0 +1,12 @@
+<%= simple_form_for(@dvp) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+  	<%= f.select :study_id,options_from_collection_for_select(Study.all, "id", "name")%>
+    <%= f.input :name %>
+    <%= f.input :desc %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

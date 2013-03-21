@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Study:</b>
+  <%= @dvp.study.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @dvp.name %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @dvp.desc %>
+</p>
+
+
+<%= link_to 'Edit', edit_dvp_path(@dvp) %> |
+<%= link_to 'Back', dvps_path %>
