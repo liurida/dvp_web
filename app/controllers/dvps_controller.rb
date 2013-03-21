@@ -80,4 +80,34 @@ class DvpsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # batch_create ec /dvps/1/ec_create
+  def ec_create
+    @dvp = Dvp.find(params[:id])
+  end
+
+  # copy action
+  def ec_copy
+    p 'in ec_copy'
+    p params[:dvp_id]
+    @dvp = Dvp.find(params[:id])
+    @source_ec = Dvp.find(params[:dvp_id]).ec_items
+
+    copy_ec_from(params[:dvp_id])
+
+
+
+  end
+
+  def copy_ec_from(dvp_id)
+    source_ec = Dvp.find(dvp_id).ec_items
+    source_ec.each do |item|
+      values = item.attributes.except("id", "created_at","updated_at","dvp_id","study_id")
+      record = @dvp.ec_items.build(values)
+      record.save()
+    end
+  end
 end
+
+
+

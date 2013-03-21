@@ -5,7 +5,12 @@ DvpWeb::Application.routes.draw do
   resources :domains
 
 
-  resources :dvps
+  resources :dvps do
+    member do
+      match 'ec_create' => 'dvps#ec_create'
+      post 'ec_copy' => 'dvps#ec_copy'
+    end
+  end
 
 
   resources :studies
