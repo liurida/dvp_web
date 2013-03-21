@@ -7,8 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <!-- head -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">DVP</a>
+          <ul class="nav">
+            <li>
+            <a href="#" class="active">Home</a>
+            </li>
+            <li>
+            <a href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- head end -->
 
-<%= yield %>
+    <!-- main -->
+    <%= yield %>
+    <!-- main end -->
 
+  </div>
 </body>
 </html>

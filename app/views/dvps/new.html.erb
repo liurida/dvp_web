@@ -1,5 +1,4 @@
 <h1>New dvp</h1>
-<%= select_tag "study_id", options_from_collection_for_select(Study.all, "id", "name") %>
-<%= render 'update_form' %>
+<%= render 'form' %>
 
 <%= link_to 'Back', dvps_path %>
