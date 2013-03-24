@@ -1,4 +1,14 @@
 <%= breadcrumb('dvp', @dvp) %>
-a
-<h1>DvpTool#show_dvp</h1>
-<%= render :template => "dvps/show.html" %>
+<h4><%= @dvp.name %> </h4>
+<table class="table table-condensed table-bordered">
+  <tr> <th> Name </th> <th> Desc </th>
+  </tr>
+  <tr>
+    <td> <%= @dvp.name %> </td> <td> <%= @dvp.desc %> </td>
+  </tr>
+</table>
+<div class="row-fluid">
+This will show EC status dashboard
+
+<%= render :template => "ec_items/index.html", :locals => {:@ec_items => @dvp.ec_items} %>
+</div>

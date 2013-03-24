@@ -13,10 +13,10 @@ module DvpToolHelper
       t_dvp = nil
       t_ec = nil
     end
-  render  :partial => "breadcrumb",
-          :locals => {:t_study => t_study,
-                      :t_dvp =>  t_dvp,
-                      :t_ec =>  t_ec}
+    render  :partial => "breadcrumb",
+            :locals => {:t_study => t_study,
+                        :t_dvp =>  t_dvp,
+                        :t_ec =>  t_ec}
   end
 
 end

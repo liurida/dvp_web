@@ -1,7 +1,8 @@
 <%= breadcrumb('study', @study) %>
 
-<h1>Study Information</h1>
+<h4>DVPs for study <%= @study.name %> </h4>
 <!-- <%= render  :template => "studies/show.html" %> -->
 <% @study.dvps.each do |dvp| %>
   <%= link_to dvp.name, show_dvp_path(dvp) %>
+  <small class='muted'>Last upated at <%=l dvp.updated_at %>   </small>
 <% end %>
