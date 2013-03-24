@@ -15,11 +15,12 @@ DvpWeb::Application.routes.draw do
 
   resources :studies
 
-  match "study/:study_id"                             => "dvp_tool#show_study"
-  match "study/:study_id/dvp/"                        => "dvp_tool#list_dvps"
-  match "study/:study_id/dvp/:dvp_id"                 => "dvp_tool#show_dvp"
-  match "study/:study_id/dvp/:dvp_id/ec_item"         => "dvp_tool#list_ecs"
-  match "study/:study_id/dvp/:dvp_id/ec_item/:ec_id"  => "dvp_tool#show_ec"
+  # Study DVP routes
+  get "dvp_tool/show_study/:study_id" => "dvp_tool#show_study",  as: :show_study
+  get "dvp_tool/list_dvps"            => "dvp_tool#list_dvps", as: :list_dvps
+  get "dvp_tool/show_dvp/:dvp_id"     => "dvp_tool#show_dvp", as: :show_dvp
+  get "dvp_tool/list_ecs"             => "dvp_tool#list_ecs", as: :list_ecs
+  get "dvp_tool/show_ec/:ec_id"       => "dvp_tool#show_ec", as: :show_ec
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

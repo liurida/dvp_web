@@ -1,2 +1,7 @@
+<%= breadcrumb('study', @study) %>
+
 <h1>Study Information</h1>
-<%= render  :template => "studies/show.html" %>
+<!-- <%= render  :template => "studies/show.html" %> -->
+<% @study.dvps.each do |dvp| %>
+  <%= link_to dvp.name, show_dvp_path(dvp) %>
+<% end %>

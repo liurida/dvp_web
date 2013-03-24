@@ -1,4 +1,7 @@
 class DvpToolController < ApplicationController
+
+  # study/
+  # show study dvp information
   def show_study
     @study = Study.find(params[:study_id])
 
