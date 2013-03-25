@@ -1,4 +1,5 @@
 module DvpToolHelper
+
   def breadcrumb(t_type, obj)
     if t_type == 'ec'
       t_study = link_to obj.dvp.study.name, show_study_path(obj.dvp.study)
@@ -13,10 +14,18 @@ module DvpToolHelper
       t_dvp = nil
       t_ec = nil
     end
-    render  :partial => "breadcrumb",
-            :locals => {:t_study => t_study,
-                        :t_dvp =>  t_dvp,
-                        :t_ec =>  t_ec}
+
+    output = '<ul class="breadcrumb">'
+    output <<  "<li>" + t_study + '<span class="divider"> /</span></li>' if t_study
+    output <<  "<li>" + t_dvp + '<span class="divider"> /</span></li>' if t_dvp
+    output <<  "<li>" + t_ec + '<span class="divider"> /</span></li>' if t_ec
+    output <<  "</ul>"
+    raw(output)
+
+#    render  :partial => "breadcrumb",
+#            :locals => {:t_study => t_study,
+#                        :t_dvp =>  t_dvp,
+#                        :t_ec =>  t_ec}
   end
 
 end
