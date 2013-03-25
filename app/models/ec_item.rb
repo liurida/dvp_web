@@ -5,6 +5,9 @@ class EcItem < ActiveRecord::Base
               :restriction,:description,
               :message, :modification_ts, :modified_by, :name, :proc_name,
               :reviewer, :tested_status,:dvp_id
+  def to_s
+    self.name
+  end
   # validates_inclusion_of :compiled_status, :in=> ['Y','N']
   # validates_inclusion_of :tested_status, :in=> ['Y','N']
   # validates_inclusion_of :reviewer, :in=> REVIEWER,allow_nil: true
