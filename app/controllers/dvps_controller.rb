@@ -87,16 +87,14 @@ class DvpsController < ApplicationController
   end
   # copy action
   def ec_copy
+    p 'in ec_copy'
+    p params[:dvp_id]
+    @dvp = Dvp.find(params[:id])
+    @source_ec = Dvp.find(params[:dvp_id]).ec_items
 
-    @dvp = Dvp.find(params[:dvp_id])
-    if !:domain_id.blank?
-      p params[:domain_id]
-    end
-    @source_ec = Dvp.find(params[:id]).ec_items
+    copy_ec_from(params[:dvp_id])
 
-    # copy_ec_from(params[:id])
-
-    redirect_to show_study_path(@dvp.study)
+    redirect_to ec_items_path
 
   end
 
