@@ -8,13 +8,7 @@
      <th>Restriction</th>
     <th>Message</th>
     <th>Reviewer</th>
-    <th>Author</th>
-    <th>Compiled status</th>
-    <th>Tested status</th>
-    <th>Creation ts</th>
-    <th>Dvp</th>
-    <th>Action</th>
-
+   
   </tr>
 
 <% @ec_items.each do |ec_item| %>
@@ -25,16 +19,10 @@
     <td><%= ec_item.restriction %></td>
     <td><%= ec_item.message %></td>
     <td><%= ec_item.reviewer %></td>
-    <td><%= ec_item.author %></td>
-    <td><%= ec_item.compiled_status %></td>
-    <td><%= ec_item.tested_status %></td>
-    <td><%= ec_item.creation_ts %></td>
-    <td><%= ec_item.dvp.name %></td>
+   
     <td>
 
           <%= link_to 'Show', ec_item, :class => 'btn' %>
-          <%= link_to 'Edit', edit_ec_item_path(ec_item),:class => 'btn btn-primary' %>
-          <%= link_to 'Destroy', ec_item, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
 
     </td>
   </tr>

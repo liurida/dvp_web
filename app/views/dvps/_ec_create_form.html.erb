@@ -1,5 +1,5 @@
 <%= form_tag('ec_copy') do %>
-<%= label_tag "Source Study" %>
+<%= label_tag "Target Study" %>
 <%= select_tag "dvp_id", options_from_collection_for_select(Dvp.all, "id", "to_s") %>
 </br>
 <%= submit_tag "Create" %>

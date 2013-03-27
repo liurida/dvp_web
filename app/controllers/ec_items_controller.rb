@@ -14,7 +14,7 @@ class EcItemsController < ApplicationController
   # GET /ec_items/1.json
   def show
     @ec_item = EcItem.find(params[:id])
-
+  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ec_item }
@@ -80,4 +80,6 @@ class EcItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end

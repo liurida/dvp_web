@@ -1,0 +1,32 @@
+<h1>Listing EC_Items</h1>
+<table class= 'table table-bordered'>
+  <tr>
+
+    <th>Name</th>
+    <th>Proc name</th>
+    <th>Description</th>
+     <th>Restriction</th>
+    <th>Message</th>
+    <th>Reviewer</th>
+    <th>Compiled status</th>
+    <th>Tested status</th>
+  </tr>
+
+<% @ec_items.each do |ec_item| %>
+  <tr>
+    <td><%= ec_item.name %></td>
+    <td><%= ec_item.proc_name %></td>
+    <td><%= ec_item.description %></td>
+    <td><%= ec_item.restriction %></td>
+    <td><%= ec_item.message %></td>
+    <td><%= ec_item.reviewer %></td>
+    <td><%= ec_item.compiled_status %></td>
+    <td><%= ec_item.tested_status %></td>
+    <td>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+

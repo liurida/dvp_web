@@ -4,7 +4,7 @@ DvpWeb::Application.routes.draw do
 
   resources :domains
 
-  get "dvps/:id/batch_ec" => "dvps#batch_ec"
+  get "dvps/:id/batch_ec" => "dvps#batch_ec", as: :batch_ec
   resources :dvps do
     member do
       #match 'ec_create' => 'dvps#ec_create'

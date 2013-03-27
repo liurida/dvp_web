@@ -43,6 +43,6 @@ class DvpToolController < ApplicationController
     elsif session[:ec_view].nil?
       session[:ec_view] = 'ctt'
     end
-    p session[:ec_view]
+   
   end
 end
