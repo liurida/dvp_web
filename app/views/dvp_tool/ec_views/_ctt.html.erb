@@ -1,28 +1,29 @@
-<h1>Listing EC_Items</h1>
-<table class= 'table table-bordered'>
+<br>
+<table class= 'table table-bordered table-condensed'>
   <tr>
-
-    <th>Name</th>
+    <th>Domain</th>
+    <th>Name(AE-???)</th>
     <th>Proc name</th>
     <th>Description</th>
      <th>Restriction</th>
     <th>Message</th>
     <th>Reviewer</th>
-   
+
   </tr>
 
 <% @ec_items.each do |ec_item| %>
   <tr>
+    <td><%= ec_item.domain %> </td>
     <td><%= ec_item.name %></td>
     <td><%= ec_item.proc_name %></td>
     <td><%= ec_item.description %></td>
     <td><%= ec_item.restriction %></td>
     <td><%= ec_item.message %></td>
     <td><%= ec_item.reviewer %></td>
-   
+
     <td>
 
-          <%= link_to 'Show', ec_item, :class => 'btn' %>
+          <%= link_to 'Show', ec_item, :class => 'btn btn-mini' %>
 
     </td>
   </tr>

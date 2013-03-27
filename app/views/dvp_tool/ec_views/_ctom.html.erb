@@ -39,7 +39,7 @@
 
 <%= link_to 'New Ec item', new_ec_item_path %></br>
 <% if !params[:domain].blank? %>
-<%= link_to "Copy #{params[:domain]}'s Ec to other study", batch_ec_path(Dvp.find(params[:dvp_id]),:overwrite_params => { :domain_id => params[:domain]}  %>
+<%= link_to "Copy #{params[:domain]}'s Ec to other study", batch_ec_path(Dvp.find(params[:dvp_id])) %>
 <% else %>
 <%= link_to 'Copy All Ec to other study', batch_ec_path(Dvp.find(params[:dvp_id])) %>
 <% end %>
