@@ -1,4 +1,7 @@
-<h1>Listing EC_Items</h1>
+<%= current_domain %>
+
+<a id="tooltip"  href="#"  data-toggle="tooltip" title="first tooltip">hover over me</a>
+
 <table class= 'table table-bordered'>
   <tr>
 
@@ -43,3 +46,12 @@
 <% else %>
 <%= link_to 'Copy All Ec to other study', batch_ec_path(Dvp.find(params[:dvp_id])) %>
 <% end %>
+
+<a href="#" class="btn" data-toggle="popover" data-placement="top" id="popover"
+  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  title="" data-original-title="Popover on top">Popover on top</a>
+<script>
+  $('#tooltip').tooltip();
+  $('#popover').popover();
+</script>
+

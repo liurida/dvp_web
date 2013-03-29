@@ -28,4 +28,15 @@ module DvpToolHelper
 #                        :t_ec =>  t_ec}
   end
 
+  def current_domain
+    if session[:domain]
+      domain_name =  session[:domain]
+    else
+      domain_name = 'All'
+    end
+
+    raw("<h4>#{domain_name}</h4>")
+
+  end
+
 end

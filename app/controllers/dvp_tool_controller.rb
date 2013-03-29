@@ -17,8 +17,9 @@ class DvpToolController < ApplicationController
   def show_dvp
     @dvp = Dvp.find(params[:dvp_id])
     @domain_list = @dvp.ec_items.select(:domain_id).where("domain_id is not null").uniq.map(&:domain)
-    if !params[:domain].blank?
-      domain_obj = Domain.find_by_name(params[:domain])
+
+    if !session[:domain]
+      domain_obj = Domain.find_by_name(session[:domain])
       @ecs = @dvp.ec_items.where(:domain_id => domain_obj.id )
     else
       @ecs = @dvp.ec_items
@@ -43,6 +44,9 @@ class DvpToolController < ApplicationController
     elsif session[:ec_view].nil?
       session[:ec_view] = 'ctt'
     end
-   
+    if params[:domain]
+     session[:domain] = params[:domain]
+    end
+    p session[:domain]
   end
 end

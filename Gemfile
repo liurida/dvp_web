@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+#source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.12'
 
@@ -37,3 +38,4 @@ gem 'thin'
 # To use debugger
 # gem 'debugger'
 gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
+#gem 'factory_girl'
