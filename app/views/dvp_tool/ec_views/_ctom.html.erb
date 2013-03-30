@@ -1,57 +1,7 @@
-<%= current_domain %>
-
-<a id="tooltip"  href="#"  data-toggle="tooltip" title="first tooltip">hover over me</a>
-
-<table class= 'table table-bordered'>
-  <tr>
-
-    <th>Name</th>
-    <th>Proc name</th>
-    <th>Description</th>
-     <th>Restriction</th>
-    <th>Message</th>
-    <th>Reviewer</th>
-    <th>Compiled status</th>
-    <th>Tested status</th>
-    <th>Action</th>
-
-  </tr>
-
-<% @ec_items.each do |ec_item| %>
-  <tr>
-    <td><%= ec_item.name %></td>
-    <td><%= ec_item.proc_name %></td>
-    <td><%= ec_item.description %></td>
-    <td><%= ec_item.restriction %></td>
-    <td><%= ec_item.message %></td>
-    <td><%= ec_item.reviewer %></td>
-    <td><%= ec_item.compiled_status %></td>
-    <td><%= ec_item.tested_status %></td>
-    <td>
-
-          <%= link_to 'Show', ec_item, :class => 'btn' %>
-          <%= link_to 'Edit', edit_ec_item_path(ec_item),:class => 'btn btn-primary' %>
-          <%= link_to 'Destroy', ec_item, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
-
-    </td>
-  </tr>
-<% end %>
-</table>
-
-<br/>
-
-<%= link_to 'New Ec item', new_ec_item_path %></br>
-<% if !params[:domain].blank? %>
-<%= link_to "Copy #{params[:domain]}'s Ec to other study", batch_ec_path(Dvp.find(params[:dvp_id])) %>
-<% else %>
-<%= link_to 'Copy All Ec to other study', batch_ec_path(Dvp.find(params[:dvp_id])) %>
-<% end %>
-
-<a href="#" class="btn" data-toggle="popover" data-placement="top" id="popover"
-  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-  title="" data-original-title="Popover on top">Popover on top</a>
-<script>
-  $('#tooltip').tooltip();
-  $('#popover').popover();
-</script>
-
+<span class= "pull-left">
+  <%= current_domain %>
+</span>
+<span class="pull-right">
+<%= link_to 'New Ec item', new_ec_path(params[:dvp_id]), :class => 'btn btn-mini btn-primary' %>
+</span>
+<%= render :partial => 'dvp_tool/ec_views/generic_table_edit' %>

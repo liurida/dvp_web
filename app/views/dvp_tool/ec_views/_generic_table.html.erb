@@ -1,0 +1,24 @@
+<small>
+<table class= 'table table-bordered table-condensed table-hover'>
+  <tr>
+    <% ec_cols(session[:ec_view]).each do |col_name| %>
+      <th> <%= col_name.titleize %> </th>
+    <% end %>
+    <th> Action </th>
+  </tr>
+
+<% @ec_items.each do |ec_item| %>
+  <tr>
+    <% ec_cols(session[:ec_view]).each do |col_name| %>
+      <td> <%= ec_item[col_name]  %> </td>
+    <% end %>
+    <td>
+      <%= link_to raw('<i class="icon-th-list"></i>'), ec_item %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</small>
+
+<br/>
+

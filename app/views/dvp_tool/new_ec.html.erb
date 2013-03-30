@@ -1,0 +1,22 @@
+<%= simple_form_for(@ec, :url => "create_ec", :html => {:class => 'form-horizental'}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :domain %>
+    <%= f.input :name %>
+    <%= f.input :proc_name %>
+    <%= f.input :description %>
+    <%= f.input :restriction %>
+    <%= f.input :message %>
+    <%= f.input :reviewer %>
+    <%= f.input :author %>
+    <%= f.input :compiled_status %>
+    <%= f.input :tested_status %>
+    <%= f.input :modified_by %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

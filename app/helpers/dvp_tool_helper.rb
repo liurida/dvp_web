@@ -34,9 +34,15 @@ module DvpToolHelper
     else
       domain_name = 'All'
     end
-
     raw("<h4>#{domain_name}</h4>")
+  end
 
+  def ec_cols(view_name='ctt')
+    col_name = Hash.new
+    col_name['ctt'] = %w(name description check_method)
+    col_name['ctom'] =col_name['ctt'] + %w(reviewer proc_name)
+    col_name['cda'] = col_name['ctom'] + %w(compiled_status tested_status)
+    return col_name[view_name]
   end
 
 end
