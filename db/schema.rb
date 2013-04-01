@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330061046) do
+ActiveRecord::Schema.define(:version => 20130331113134) do
 
   create_table "domains", :force => true do |t|
     t.string   "name"
@@ -35,18 +35,19 @@ ActiveRecord::Schema.define(:version => 20130330061046) do
     t.string   "message"
     t.string   "reviewer"
     t.string   "author"
-    t.string   "compiled_status"
     t.string   "tested_status"
     t.string   "creation_ts"
     t.string   "modification_ts"
     t.string   "modified_by"
     t.integer  "study_id"
     t.integer  "dvp_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "restriction"
     t.integer  "domain_id"
     t.string   "check_method"
+    t.string   "programmed_status"
+    t.string   "removed"
   end
 
   add_index "ec_items", ["domain_id"], :name => "index_ec_items_on_domain_id"

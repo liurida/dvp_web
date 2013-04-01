@@ -1,19 +1,8 @@
 <%= breadcrumb('dvp', @dvp) %>
 <div class="row-fluid">
-  <!-- left domain list -->
-  <div class="span2" >
-    <div class="row-fluid" >
-      <h5> Domain List </h5>
-      <ul class="nav nav-pills nav-stacked">
-        <li class=<%= "active" if session[:domain].nil? %>> <%= link_to 'All', :domain_name => "all" %> </li>
-        <% @domain_list.each do |domain| %>
-          <li class="<%= 'active' if session[:domain] == domain.name %>">  <%= link_to domain, :domain_name => domain.name  %> </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <!-- left domain list end  -->
-
+  <div class="span2">
+  <%= render 'domain_list' %>
+</div>
   <!-- ec list -->
   <div class="span10" >
 

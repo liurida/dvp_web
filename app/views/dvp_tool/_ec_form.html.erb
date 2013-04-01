@@ -1,0 +1,41 @@
+<%= simple_form_for(@ec,
+                    :url => @ec.id? ? update_ec_path(@ec.dvp, @ec) : create_ec_path(@ec.dvp),
+                    :html => {:class => ''}) do |f| %>
+<%= f.error_notification %>
+
+<div class="form-ddinputs">
+  <table class='table table-bordered'>
+  <tr>
+    <th> Basic Information <small class="muted"> CTT </small> </th>
+    <th> Implimentation <small class="muted"> CTOM, CDA </small>  </th>
+    <th> Testing <small class="muted"> CDA, Tester </small> </th>
+  </tr>
+    <tr>
+      <td>
+        <%= f.association :domain%>
+        <%= f.input :name, :hint => raw('<small>Unique idendifier for the EC. eg: AE001</small>')%>
+
+        <%= f.input :check_method, as: :radio_buttons, collection: @ec.list_check_method %>
+        <%= f.input :description , as: :text , :input_html => {:class => 'input-xlarge', :rows => 4 } %>
+      </td>
+      <td>
+        <%= f.input :restriction %>
+        <%= f.input :message, :hint => raw("<small>Query message</small>") %>
+        <%= f.input :reviewer, as: :select, collection: @ec.list_reviewer %>
+      </td>
+      <td>
+        <%= f.input :proc_name %>
+        <%= f.input :programmed_status %>
+        <%= f.input :tested_status %>
+        <%= raw("<span class='label label-warning'>Has been removed</span>") if @ec.removed %>
+        <%= f.input :removed %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
+<% end %>
+

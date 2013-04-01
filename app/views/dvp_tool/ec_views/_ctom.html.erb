@@ -1,7 +1,9 @@
+<div class="row-fluid">
 <span class= "pull-left">
   <%= current_domain %>
 </span>
 <span class="pull-right">
-<%= link_to 'New Ec item', new_ec_path(params[:dvp_id]), :class => 'btn btn-mini btn-primary' %>
+  <%= link_to 'New Ec item', new_ec_path(params[:dvp_id]), :class => 'btn btn-mini btn-primary' %>
 </span>
-<%= render :partial => 'dvp_tool/ec_views/generic_table_edit' %>
+</div>
+<%= render :partial => 'dvp_tool/ec_views/generic_table' %>
