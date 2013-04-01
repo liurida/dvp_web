@@ -1,34 +1,5 @@
-<h1>Listing EC_Items</h1>
-<table class= 'table table-bordered'>
-  <tr>
+<%= current_domain %>
 
-    <th>Name</th>
-    <th>Proc name</th>
-    <th>Description</th>
-     <th>Restriction</th>
-    <th>Message</th>
-    <th>Reviewer</th>
-   
-  </tr>
+<%= render :partial => 'dvp_tool/ec_views/generic_table' %>
 
-<% @ec_items.each do |ec_item| %>
-  <tr>
-    <td><%= ec_item.name %></td>
-    <td><%= ec_item.proc_name %></td>
-    <td><%= ec_item.description %></td>
-    <td><%= ec_item.restriction %></td>
-    <td><%= ec_item.message %></td>
-    <td><%= ec_item.reviewer %></td>
-   
-    <td>
 
-          <%= link_to 'Show', ec_item, :class => 'btn' %>
-
-    </td>
-  </tr>
-<% end %>
-</table>
-
-<br/>
-
-<%= link_to 'New Ec item', new_ec_item_path %>

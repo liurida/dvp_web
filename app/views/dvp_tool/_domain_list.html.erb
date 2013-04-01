@@ -1,0 +1,16 @@
+  <!-- left domain list -->
+    <div class="row-fluid" >
+      <h5> Domain List </h5>
+      <ul class="nav nav-pills nav-stacked">
+        <li class=<%= "active" if session[:domain].nil? %>>
+          <%= link_to 'All', :action => 'show_dvp',
+                   :dvp_id => @dvp.id, :domain_name => "all" %> </li>
+        <% @domain_list.each do |domain| %>
+          <li class="<%= 'active' if session[:domain] == domain.name %>">
+          <%= link_to domain, :action=> 'show_dvp',
+            :dvp_id => @dvp.id, :domain_name => domain.name  %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <!-- left domain list end  -->
+

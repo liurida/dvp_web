@@ -1,0 +1,47 @@
+<small>
+  <%= link_to 'Show Removed', "#", :id => 'show-link'  %>
+  <%= link_to 'Hide Removed', "#", :id => 'hidden-link'  %>
+<table class= 'table table-bordered table-condensed table-hover'>
+  <tr>
+    <% ec_cols(session[:ec_view]).each do |col_name| %>
+      <th> <%= col_name.titleize %> </th>
+    <% end %>
+    <th> Action </th>
+  </tr>
+
+<% @ec_items.each do |ec_item| %>
+  <tr <%= raw("style=text-decoration:line-through; class='warning hidden'") if ec_item.removed == 'y' %> >
+    <% ec_cols(session[:ec_view]).each do |col_name| %>
+      <td>
+        <%= ec_item[col_name]  %>
+      </td>
+    <% end %>
+    <td>
+      <%= link_to raw('<i class="icon-th-list"></i>'), ec_item %>
+      <%= link_to raw('<i class="icon-edit"></i>'), edit_ec_path(ec_item.dvp, ec_item) %>
+      <%= link_to raw('<i class="icon-trash"></i>'),
+        destroy_ec_path(ec_item.dvp, ec_item),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</small>
+
+<br/>
+<script>
+  $('.hidden').hide();
+  $('#hidden-link').hide();
+  $("#show-link").click(function(){
+    $('.hidden').show('fast');
+    $('#hidden-link').show();
+    $('#show-link').hide();
+    });
+  $("#hidden-link").click(function(){
+    $('.hidden').hide('fast');
+    $('#hidden-link').hide();
+    $('#show-link').show();
+  });
+</script>
+
