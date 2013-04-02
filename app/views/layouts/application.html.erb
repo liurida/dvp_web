@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DvpWeb</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container-fluid">
-    <!-- head -->
-    <div class="navbar ">
-      <div class="navbar-inner">
+  <head>
+    <title>DvpWeb</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- head -->
+      <div class="navbar ">
+        <div class="navbar-inner">
           <a class="brand" href="#">DVP</a>
           <ul class="nav">
             <li>
@@ -20,14 +20,32 @@
             <a href="#">About</a>
             </li>
           </ul>
+
+          <ul class="nav pull-right">
+            <% if current_user %>
+              <li>
+              <%= link_to current_user.username %>
+              </li>
+              <li>
+              <%= link_to("Sign Out",   destroy_user_session_path,:method => :delete, :title => "Sign Out" ) %>
+              </li>
+            <% else %>
+
+              <li>
+              <%= link_to("Sign In", new_session_path(:user), :title => 'Sign In') %>
+              </li>
+
+            <% end %>
+
+          </ul>
+        </div>
       </div>
+      <!-- head end -->
+
+      <!-- main -->
+      <%= yield %>
+      <!-- main end -->
+
     </div>
-    <!-- head end -->
-
-    <!-- main -->
-    <%= yield %>
-    <!-- main end -->
-
-  </div>
-</body>
+  </body>
 </html>
