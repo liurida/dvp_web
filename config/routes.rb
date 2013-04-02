@@ -1,4 +1,6 @@
 DvpWeb::Application.routes.draw do
+  devise_for :users
+
   resources :ec_items
 
 
@@ -16,11 +18,20 @@ DvpWeb::Application.routes.draw do
   resources :studies
 
   # Study DVP routes
-  get "dvp_tool/show_study/:study_id" => "dvp_tool#show_study",  as: :show_study
-  get "dvp_tool/list_dvps"            => "dvp_tool#list_dvps", as: :list_dvps
-  get "dvp_tool/show_dvp/:dvp_id"     => "dvp_tool#show_dvp", as: :show_dvp
-  get "dvp_tool/list_ecs"             => "dvp_tool#list_ecs", as: :list_ecs
-  get "dvp_tool/show_ec/:ec_id"       => "dvp_tool#show_ec", as: :show_ec
+  get "dvp_tool/show_study/:study_id"             => "dvp_tool#show_study",   as: :show_study
+  get "dvp_tool/show_study/:study_id/new_dvp"     => "dvp_tool#new_dvp",      as: :new_dvp
+  post "dvp_tool/show_study/:study_id/create_dvp" => "dvp_tool#create_dvp",   as: :create_dvp
+
+  #get "dvp_tool/list_dvps"                        => "dvp_tool#list_dvps",    as: :list_dvps
+  get "dvp_tool/show_dvp/:dvp_id"                 => "dvp_tool#show_dvp",     as: :show_dvp
+  get "dvp_tool/show_dvp/:dvp_id/new_ec"          => "dvp_tool#new_ec",       as: :new_ec
+  post "dvp_tool/show_dvp/:dvp_id/create_ec"      => "dvp_tool#create_ec",    as: :create_ec
+  get "dvp_tool/show_dvp/:dvp_id/:ec_id/edit_ec"  => "dvp_tool#edit_ec",       as: :edit_ec
+  put  "dvp_tool/show_dvp/:dvp_id/:ec_id/update_ec"  => "dvp_tool#update_ec",    as: :update_ec
+  delete "dvp_tool/show_dvp/:dvp_id/:ec_id/destroy_ec" => "dvp_tool#destroy_ec", as: :destroy_ec
+
+  get "dvp_tool/list_ecs"                         => "dvp_tool#list_ecs",     as: :list_ecs
+  get "dvp_tool/show_ec/:ec_id"                   => "dvp_tool#show_ec",      as: :show_ec
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

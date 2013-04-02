@@ -1,25 +1,18 @@
 <%= breadcrumb('dvp', @dvp) %>
 <div class="row-fluid">
-  <!-- left domain list -->
   <div class="span2">
-    <h5> Domain List </h5>
-    <ul class="nav nav-pills nav-stacked">
-      <% @domain_list.each do |domain| %>
-        <li > <%= link_to domain, "?domain=#{domain}" %> </li>
-      <% end %>
-    </ul>
-  </div>
-  <!-- left domain list end  -->
-
-  <!-- ec list -->
-  <div class="span10">
-    <div class="row-fluid">
-      <%= link_to "CTT", :ec_view => 'ctt' %> |
-      <%= link_to "CDA", :ec_view => 'cda' %> |
-      <%= link_to "CTOM", :ec_view => 'ctom' %> |
-    </div>
-    <%= render :partial => "dvp_tool/ec_views/#{session[:ec_view]}", :locals => {:@ec_items => @ecs} %>
-  </div>
+  <%= render 'domain_list' %>
 </div>
-<!-- ec list end -->
+  <!-- ec list -->
+  <div class="span10" >
+
+    <ul class="nav nav-tabs">
+      <li class="<%= "active" if session[:ec_view]=='ctt' %>">  <%= link_to "CTT", :ec_view => 'ctt' %> </li>
+      <li class="<%= "active" if session[:ec_view]=='cda' %>">  <%= link_to "CDA", :ec_view => 'cda' %> </li>
+      <li  class="<%= "active" if session[:ec_view]=='ctom' %>">  <%= link_to "CTOM", :ec_view => 'ctom' %> </li>
+    </ul>
+    <%= render :partial => "dvp_tool/ec_views/#{session[:ec_view]}", :locals => {:@ec_items => @ecs} %>
+
+  </div>
+  <!-- ec list end -->
 </div>
