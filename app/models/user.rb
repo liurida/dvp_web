@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   devise :ldap_authenticatable, :validatable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :login,  :password, :password_confirmation, :remember_me
+  attr_accessible :login,  :password, :password_confirmation, :remember_me,
+                  :email, :username
   # attr_accessible :title, :body
   #
   before_create :get_ldap_email
@@ -21,6 +22,12 @@ class User < ActiveRecord::Base
       ldap_entry = nil
       ldap.search(:base => base, :filter => filter) {|entry| ldap_entry = entry}
       self.email = ldap_entry.mail.first
+      self.username = ldap_entry.cn.first
   end
 
+#  def username
+#    first= email.split("@")[0].split(".")[0]
+#    last=email.split("@")[0].split(".")[1]
+#    "#{first.titleize} #{last ? last.titleize : ""}"
+#  end
 end
