@@ -28,4 +28,32 @@ module DvpToolHelper
 #                        :t_ec =>  t_ec}
   end
 
+  def current_domain
+    if session[:domain]
+      domain_name =  session[:domain]
+    else
+      domain_name = 'All'
+    end
+    raw("<h4>#{domain_name}</h4>")
+  end
+
+  def ec_cols(view_name='ctt')
+    #define the ec_cols for different role (ctt, cda, ctom)
+    col_name = Hash.new
+    col_name['ctt'] = %w(name description check_method)
+    col_name['ctom'] =col_name['ctt'] + %w(reviewer proc_name)
+    col_name['cda'] = col_name['ctom'] + %w(programmed_status tested_status)
+    return col_name[view_name]
+  end
+
+  def show_col_value(obj, key)
+    if key == 'programmed_status'
+      'programmed action'
+    elsif key == 'tested_status'
+      'test action'
+    else
+      obj[key]
+    end
+  end
+
 end
