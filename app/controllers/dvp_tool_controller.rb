@@ -11,7 +11,7 @@ class DvpToolController < ApplicationController
   # /show_study/:study_id/new_dvp
   def new_dvp
     @study = Study.find(params[:study_id])
-    @dvp = @study.dvps.build
+    @dvp = @study.dvps.new
   end
 
   # /show_study/:study_id/create_dvp

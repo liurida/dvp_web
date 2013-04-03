@@ -23,8 +23,14 @@
 
           <ul class="nav pull-right">
             <% if current_user %>
+
               <li>
-              <%= link_to current_user.username %>
+              <a href=#>
+                <% if current_user.ldap_info %>
+              <img src='/serve_images/<%= current_user.login%>' height='24' width="24">
+                <% end %>
+              <%= current_user.username %>
+            </a>
               </li>
               <li>
               <%= link_to("Sign Out",   destroy_user_session_path,:method => :delete, :title => "Sign Out" ) %>

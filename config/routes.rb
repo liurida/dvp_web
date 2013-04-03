@@ -17,6 +17,9 @@ DvpWeb::Application.routes.draw do
 
   resources :studies
 
+  #Match thumbnailphoto
+  get '/serve_images/:login_id' => 'images#serve'
+
   # Study DVP routes
   get "dvp_tool/show_study/:study_id"             => "dvp_tool#show_study",   as: :show_study
   get "dvp_tool/show_study/:study_id/new_dvp"     => "dvp_tool#new_dvp",      as: :new_dvp
