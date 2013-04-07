@@ -26,19 +26,19 @@
 
               <li>
               <a href=#>
-                <% if current_user.ldap_info %>
-              <img src='/serve_images/<%= current_user.login%>' height='24' width="24">
-                <% end %>
+                <img src='/serve_images/<%= current_user.login%>'
+                         class='img-rounded'
+                         height='20' width="20">
               <%= current_user.username %>
             </a>
               </li>
               <li>
-              <%= link_to("Sign Out",   destroy_user_session_path,:method => :delete, :title => "Sign Out" ) %>
+              <%= link_to("Sign Out",   session_destroy_path,:method => :delete, :title => "Sign Out" ) %>
               </li>
             <% else %>
 
               <li>
-              <%= link_to("Sign In", new_session_path(:user), :title => 'Sign In') %>
+              <%= link_to("Sign In", session_new_path, :title => 'Sign In') %>
               </li>
 
             <% end %>
@@ -49,6 +49,7 @@
       <!-- head end -->
 
       <!-- main -->
+      <%= render "layouts/show_flash" %>
       <%= yield %>
       <!-- main end -->
 

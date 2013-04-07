@@ -1,0 +1,13 @@
+<h2>Sign in</h2>
+
+<%= simple_form_for(:user, :url => session_create_path) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :login, :required => false, :autofocus => true %>
+    <%= f.input :password, :required => false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign in" %>
+  </div>
+<% end %>
+

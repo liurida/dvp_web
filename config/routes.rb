@@ -1,5 +1,12 @@
 DvpWeb::Application.routes.draw do
-  devise_for :users
+  get "home/index"
+
+  # login
+  get "session/new",        as: :session_new
+  post "session/create",     as: :session_create
+  delete "session/destroy", as: :session_destroy
+
+  #devise_for :users
 
   resources :ec_items
 
@@ -85,7 +92,7 @@ DvpWeb::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

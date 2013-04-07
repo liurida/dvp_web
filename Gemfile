@@ -39,5 +39,7 @@ gem 'thin'
 # To use debugger
 # gem 'debugger'
 #gem 'factory_girl'
-gem "devise_ldap_authenticatable"
-gem "devise"
+#gem "devise_ldap_authenticatable",
+#  :git => "http://github.com/cschiewek/devise_ldap_authenticatable.git"
+#gem "devise"
+gem 'net-ldap'

@@ -23,11 +23,11 @@ authorizations: &AUTHORIZATIONS
 development:
   host: bjpw01.f2.enterprise
   port: 389
-  attribute: mailnickname
+  attribute: samaccountname
   base: dc=f2, dc=enterprise
-  admin_user: i0040679
-  admin_password: r&dchina2012
-  ssl: false
+#admin_user: i0040679
+#  admin_password: r&dchina2012
+  ssl: fals
   # <<: *AUTHORIZATIONS
 
 test:
