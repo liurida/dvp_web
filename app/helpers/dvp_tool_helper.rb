@@ -46,11 +46,20 @@ module DvpToolHelper
     return col_name[view_name]
   end
 
+  def disable_except(role_list)
+    if current_user and current_user.login == 'i0040679'
+      false
+    else
+      true
+    end
+  end
+
+
   def show_col_value(obj, key)
     if key == 'programmed_status'
-      'programmed action'
+      render :partial => "programmed_status_form", :locals => {:ec => obj}
     elsif key == 'tested_status'
-      'test action'
+      render :partial => "tested_status_form", :locals => {:ec => obj}
     else
       obj[key]
     end

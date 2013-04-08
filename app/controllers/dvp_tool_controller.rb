@@ -11,7 +11,7 @@ class DvpToolController < ApplicationController
   # /show_study/:study_id/new_dvp
   def new_dvp
     @study = Study.find(params[:study_id])
-    @dvp = @study.dvps.build
+    @dvp = @study.dvps.new
   end
 
   # /show_study/:study_id/create_dvp
@@ -64,6 +64,7 @@ class DvpToolController < ApplicationController
   #show_dvp/:dvp_id/update_ec/:ec_id
   def update_ec
     @ec_item = EcItem.unscoped.find(params[:ec_id])
+    p params[:ec_item]
 
     respond_to do |format|
       if @ec_item.update_attributes(params[:ec_item])
