@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
         user.username = ldap_entry.displayname.first
         user.ldap_entries = Marshal.dump(ldap_entry)
         user.save
+        user
       end
     else
       nil

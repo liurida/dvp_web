@@ -43,3 +43,5 @@ gem 'thin'
 #  :git => "http://github.com/cschiewek/devise_ldap_authenticatable.git"
 #gem "devise"
 gem 'net-ldap'
+gem "font-awesome-rails"
+

@@ -1,0 +1,9 @@
+<small>
+  <%= simple_form_for(ec,  :url => update_ec_path(ec.dvp, ec),
+                    :html => {:class => 'form-horizontal inline', :style => "margin:0;"}
+                     ) do |f| %>
+  <%= f.input_field :tested_status, :collection => [['Pass','Pass'], ['Fail','Fail']],
+    as: :radio_buttons,  :item_wrapper_class => 'inline'  %>
+<% end %>
+</small
+
