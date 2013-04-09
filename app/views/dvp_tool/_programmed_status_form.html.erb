@@ -1,0 +1,20 @@
+<%= simple_form_for(ec,  :url => update_ec_path(ec.dvp, ec),
+                    :html => {:class => 'form-horizontal inline', :style => "margin:0;"} ) do |f| %>
+     <%= f.input_field :programmed_status, :collection => [['Yes','Y'], ['No','N']],
+      as: :radio_buttons,
+      :item_wrapper_class => 'inline', :disabled => disable_except('cda') %>
+  </div>
+<% end %>
+
+<!--
+<script>
+  $("#trigger").hover(
+  function(){
+    $("#input_layout_<%=ec.id%>").slideToggle().css('display','block');
+  },
+  function(){
+    $("#input_layout_<%=ec.id%>").slideToggle();
+  }
+  );
+</script>
+-->

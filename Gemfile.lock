@@ -32,7 +32,6 @@ GEM
       railties (>= 3.0)
       sass (>= 3.2)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -42,18 +41,12 @@ GEM
       execjs
     coffee-script-source (1.6.1)
     daemons (1.1.9)
-    devise (2.2.3)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
-    devise_ldap_authenticatable (0.6.1)
-      devise (>= 2.0.0)
-      net-ldap (~> 0.2.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    font-awesome-rails (3.0.2.0)
+      railties (>= 3.1)
     hike (1.2.1)
     i18n (0.6.4)
     journey (1.0.4)
@@ -68,8 +61,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.7.0)
-    net-ldap (0.2.2)
-    orm_adapter (0.4.0)
+    net-ldap (0.3.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -128,8 +120,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.2.1)
-      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -137,9 +127,9 @@ PLATFORMS
 DEPENDENCIES
   anjlab-bootstrap-rails (>= 2.3)
   coffee-rails (~> 3.2.1)
-  devise
-  devise_ldap_authenticatable
+  font-awesome-rails
   jquery-rails
+  net-ldap
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   simple_form

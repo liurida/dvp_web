@@ -1,4 +1,3 @@
-<small>
   <%= link_to 'Show Removed', "#", :id => 'show-link'  %>
   <%= link_to 'Hide Removed', "#", :id => 'hidden-link'  %>
 <table class= 'table table-bordered table-condensed table-hover'>
@@ -13,7 +12,7 @@
   <tr <%= raw("style=text-decoration:line-through; class='warning hidden'") if ec_item.removed == 'y' %> >
     <% ec_cols(session[:ec_view]).each do |col_name| %>
       <td>
-        <%= ec_item[col_name]  %>
+      <%= show_col_value(ec_item, col_name) %>
       </td>
     <% end %>
     <td>
@@ -27,7 +26,6 @@
   </tr>
 <% end %>
 </table>
-</small>
 
 <br/>
 <script>

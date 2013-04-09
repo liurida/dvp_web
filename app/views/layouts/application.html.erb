@@ -7,10 +7,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="container-fluid">
-      <!-- head -->
-      <div class="navbar ">
-        <div class="navbar-inner">
+    <!-- head -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
           <a class="brand" href="#">DVP</a>
           <ul class="nav">
             <li>
@@ -19,20 +19,36 @@
             <li>
             <a href="#">About</a>
             </li>
+            <li>
+
+            <form class="form-search" style="margin-top:5px;margin-bottom:5px;">
+              <div class="input-append">
+                <input type="text" class="span2 search-query" name='q'>
+                <button type="submit" class="btn"><i class="icon-search"></i>Search</button>
+              </div>
+            </form>
+
+            </li>
           </ul>
 
           <ul class="nav pull-right">
             <% if current_user %>
+
               <li>
-              <%= link_to current_user.username %>
+              <a href=#>
+                <img src='/serve_images/<%= current_user.login%>'
+                class='img-rounded'
+                height='20' width="20">
+                <%= current_user.username %>
+              </a>
               </li>
               <li>
-              <%= link_to("Sign Out",   destroy_user_session_path,:method => :delete, :title => "Sign Out" ) %>
+              <%= link_to("Sign Out",   session_destroy_path,:method => :delete, :title => "Sign Out" ) %>
               </li>
             <% else %>
 
               <li>
-              <%= link_to("Sign In", new_session_path(:user), :title => 'Sign In') %>
+              <%= link_to("Sign In", session_new_path, :title => 'Sign In') %>
               </li>
 
             <% end %>
@@ -40,9 +56,12 @@
           </ul>
         </div>
       </div>
-      <!-- head end -->
+    </div>
+    <!-- head end -->
+    <div class="container-fluid">
 
       <!-- main -->
+      <%= render "layouts/show_flash" %>
       <%= yield %>
       <!-- main end -->
 
