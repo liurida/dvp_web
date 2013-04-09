@@ -1,4 +1,6 @@
 DvpWeb::Application.routes.draw do
+  get "search/index", as: :search
+
   root :to => 'home#index'
   get "home/index"
 

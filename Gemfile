@@ -44,4 +44,4 @@ gem 'thin'
 #gem "devise"
 gem 'net-ldap'
 gem "font-awesome-rails"
-
+gem "ransack" # advance search

@@ -21,12 +21,13 @@
             </li>
             <li>
 
-            <form class="form-search" style="margin-top:5px;margin-bottom:5px;">
+            <%= search_form_for @q, :url => search_path,
+                    :html => {:class => "form-search", :style => "margin-top:5px; margin-bottom:5px"} do |f| %>
               <div class="input-append">
-                <input type="text" class="span2 search-query" name='q'>
+                <%= f.text_field :name_cont , :class => "span2 search-query" %>
                 <button type="submit" class="btn"><i class="icon-search"></i>Search</button>
               </div>
-            </form>
+          <% end %>
 
             </li>
           </ul>

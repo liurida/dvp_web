@@ -1,0 +1,7 @@
+<% if @record.empty? %>
+  No record
+<% else %>
+<% @record.each do |item| %>
+  <%= item.name %>
+<% end %>
+<% end %>
