@@ -47,4 +47,4 @@ gem "ransack" # advance search
 group :development do
   gem 'rails-dev-boost', :git => 'http://github.com/thedarkone/rails-dev-boost.git'
 end
-
+gem 'acts_as_commentable', '3.0.1'

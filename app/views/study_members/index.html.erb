@@ -1,0 +1,27 @@
+<h1>Listing study_members</h1>
+
+<table class="table table-condensed table-bordered">
+  <tr>
+    <th>Study</th>
+    <th>User</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @study_members.each do |study_member| %>
+  <tr>
+    <td><%= study_member.study %></td>
+    <td><%= study_member.user %></td>
+    <td><%= study_member.role %></td>
+    <td><%= link_to 'Show', study_member %></td>
+    <td><%= link_to 'Edit', edit_study_member_path(study_member) %></td>
+    <td><%= link_to 'Destroy', study_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Study member', new_study_member_path %>

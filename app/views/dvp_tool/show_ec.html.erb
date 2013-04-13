@@ -1,6 +1,40 @@
-<%= breadcrumb('ec', @ec_item) %>
+<%= breadcrumb('ec', @ec) %>
 
-<h1>DvpTool#show_ec</h1>
+<div class="row-fluid">
+  <div class="span2">
+    <%= render 'domain_list' %>
+  </div>
+  <div class="span10">
+    <div class="">
+      <%= render "dvp_tool/ec_views/ec_detail" %>
 
-<%= render :template => "ec_items/show.html" %>
+      <%= form_tag ec_comment_create_path,:style => 'margin-bottom:5px;' do %>
+        <div class="input-append">
+          <%= text_field_tag :comment,nil, :class => 'input-xxlarge'%>
+          <button class="btn btn-success" type='submit'><i class="icon-comment"></i></button>
+        </div>
+
+
+        <%= hidden_field_tag :user_id, current_user.id  %>
+        <%= hidden_field_tag :return_url, request.url %>
+      <% end  %>
+      <i class="icon-filter"></i>
+      <%= link_to 'ALL',{:comment_to => ''}, :class => params[:comment_to]=='' ? 'label label-inverse' : ''  %> |
+      <%= link_to 'CTOM',{:comment_to => 'ctom'}, :class => params[:comment_to]=='ctom' ? 'label label-inverse' : ''  %> |
+      <%= link_to 'CDA',{:comment_to => 'cda'}, :class => params[:comment_to]=='cda' ? 'label label-inverse' : ''  %> |
+      <%= link_to 'TEST',{:comment_to => 'tester'}, :class => params[:comment_to]=='tester' ? 'label label-inverse' : ''  %>
+      <% comment_filter(@ec).each do |comment| %>
+        <p class="well" style="padding:5px; margin-top:10px;margin-bottom:0px;"><%= comment.comment.html_safe %></p>
+        <small>
+          <span class="muted pull-right" style="padding:0px;">
+            <%= comment.user %>, <%= time_ago_in_words(comment.created_at) %> ago
+          </span>
+        </small>
+        </br>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
 

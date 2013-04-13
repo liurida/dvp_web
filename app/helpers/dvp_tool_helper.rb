@@ -4,7 +4,7 @@ module DvpToolHelper
     if t_type == 'ec'
       t_study = link_to obj.dvp.study.name, show_study_path(obj.dvp.study)
       t_dvp = link_to obj.dvp.name, show_dvp_path(obj.dvp)
-      t_ec = obj
+      t_ec = obj.to_s
     elsif t_type == 'dvp'
       t_study = link_to obj.study.name, show_study_path(obj.study)
       t_dvp = link_to obj.name, show_dvp_path(obj)
@@ -43,6 +43,7 @@ module DvpToolHelper
     col_name['ctt'] = %w(name description check_method)
     col_name['ctom'] =col_name['ctt'] + %w(reviewer proc_name)
     col_name['cda'] = col_name['ctom'] + %w(programmed_status tested_status)
+    col_name['all'] = col_name['cda']
     return col_name[view_name]
   end
 
@@ -65,4 +66,12 @@ module DvpToolHelper
     end
   end
 
+  def comment_filter(obj)
+    if !params[:comment_to].blank?
+      where_c = "%#{params[:comment_to]}%"
+      results = obj.comments.where("comment like ?", where_c).where("created_at > ?", Date.today-1.month).reverse
+    else
+      results = obj.comments.where("created_at > ?", Date.today-1.month).reverse
+    end
+  end
 end

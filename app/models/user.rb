@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   # disable devise, no password needs
   attr_accessible :login, :email, :username, :ldap_entries
 
+  def to_s
+    self.username
+  end
+
   def ldap_info
     #load Marshaled obj
     Marshal.load(self.ldap_entries)

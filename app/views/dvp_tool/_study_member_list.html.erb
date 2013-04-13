@@ -1,0 +1,23 @@
+<!-- study member -->
+<table class="table table-condensed" border="0">
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>Action</th>
+
+  </tr>
+  <% @study.study_members.each do |item| %>
+    <tr>
+      <td><%= item.user %></td>
+      <td><%= item.role  %></td>
+      <td>
+        <% if item.user == current_user %>
+
+    <%= link_to raw('<i class="icon-trash"> </i>'), item , method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end  %>
+      </td>
+
+    </tr>
+  <% end  %>
+</table>
+<!-- study team end -->

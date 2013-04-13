@@ -1,11 +1,12 @@
 class DvpToolController < ApplicationController
   before_filter :set_ec_view, :only => ['show_dvp']
-  before_filter :get_dvp_and_domains, :only => ['show_dvp', 'new_ec', 'create_ec', 'edit_ec', 'update_ec', 'destroy_ec']
+  before_filter :get_dvp_and_domains, :only => ['show_dvp', 'new_ec', 'create_ec', 'edit_ec', 'update_ec', 'destroy_ec','show_ec']
 
   # /show_study/:study_id
   # show study dvp information
   def show_study
     @study = Study.find(params[:study_id])
+    @study_member = @study.study_members.build
   end
 
   # /show_study/:study_id/new_dvp
@@ -56,12 +57,17 @@ class DvpToolController < ApplicationController
     @ec = @dvp.ec_items.build(:domain_id => domain_id)
   end
 
-  #/show_dvp/:dvp_id/edit_ec/:ec_id
+  # /show_dvp/:dvp_id/:ec_id/show_ec
+  def show_ec
+    @ec = EcItem.find(params[:ec_id])
+  end
+
+  #/show_dvp/:dvp_id/:ec_id/edit_ec
   def edit_ec
     @ec = EcItem.unscoped.find(params[:ec_id])
   end
 
-  #show_dvp/:dvp_id/update_ec/:ec_id
+  #show_dvp/:dvp_id/:ec_id/update_ec
   def update_ec
     @ec_item = EcItem.unscoped.find(params[:ec_id])
     p params[:ec_item]
@@ -78,7 +84,7 @@ class DvpToolController < ApplicationController
 
   end
 
-  #show_dvp/:dvp_id/destroy/:ec_id
+  #show_dvp/:dvp_id/:ec_id/destroy_ec
   def destroy_ec
     @ec_item = EcItem.find(params[:ec_id])
     #@ec_item.destroy
@@ -110,9 +116,26 @@ class DvpToolController < ApplicationController
     @ec_items = Dvp.find(params[:dvp_id]).ec_items
   end
 
-  # /show_ec/:ec_id
-  def show_ec
-    @ec_item = EcItem.find(params[:ec_id])
+  # create_comments
+
+  def comment_create
+    commentable = EcItem.find(params[:ec_id])
+    if !params[:comment].blank?
+      record = commentable.comments.create
+      record.comment = comment_hight(params[:comment])
+      record.user_id = params[:user_id]
+      record.save
+      message = 'Comment added'
+    else
+      message =  'No comment'
+    end
+    redirect_to params[:return_url], :notice => message
+  end
+
+  def comment_hight(str)
+    str = str.gsub('ctom',"<span class='label label-info'>ctom</span>")
+    str = str.gsub('cda',"<span class='label label-important'>cda</span>")
+    str = str.gsub('tester',"<span class='label label-warning'>tester</span>")
   end
 
   private
