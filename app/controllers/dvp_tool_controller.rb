@@ -1,6 +1,6 @@
 class DvpToolController < ApplicationController
   before_filter :set_ec_view, :only => ['show_dvp']
-  before_filter :get_dvp_and_domains, :only => ['show_dvp', 'new_ec', 'create_ec', 'edit_ec', 'update_ec', 'destroy_ec','show_ec']
+  before_filter :get_dvp_and_domains, :except => ['show_study', 'new_dvp', 'create_dvp', 'comment_create']
 
   # /show_study/:study_id
   # show study dvp information
@@ -34,11 +34,6 @@ class DvpToolController < ApplicationController
 
   # /show_dvp/:dvp_id
   def show_dvp
-    #if params[:show_removed] == 'y'
-    #  sub_ecs = @dvp.ec_items
-    #else
-    #  sub_ecs = @dvp.ec_items.where("removed <> 'y' or removed is null")
-    #end
     sub_ecs = @dvp.ec_items
 
     if session[:domain]
@@ -157,4 +152,5 @@ class DvpToolController < ApplicationController
     @dvp = Dvp.find(params[:dvp_id])
     @domain_list = @dvp.ec_items.select(:domain_id).where("domain_id is not null").uniq.map(&:domain)
   end
-end
+
+ end

@@ -42,6 +42,8 @@ DvpWeb::Application.routes.draw do
   get "dvp_tool/show_dvp/:dvp_id/:ec_id/edit_ec"  => "dvp_tool#edit_ec",       as: :edit_ec
   put  "dvp_tool/show_dvp/:dvp_id/:ec_id/update_ec"  => "dvp_tool#update_ec",    as: :update_ec
   delete "dvp_tool/show_dvp/:dvp_id/:ec_id/destroy_ec" => "dvp_tool#destroy_ec", as: :destroy_ec
+
+  #ec_item_comment
   post "dvp_tool/ec_comment/:ec_id/create"           => "dvp_tool#comment_create", as: :ec_comment_create
 
   get "dvp_tool/list_ecs"                         => "dvp_tool#list_ecs",     as: :list_ecs
