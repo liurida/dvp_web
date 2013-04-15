@@ -1,13 +1,22 @@
-<h2>Sign in</h2>
-
-<%= simple_form_for(:user, :url => session_create_path) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :login, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
-
+<table>
+	<tr>
+		<td style="width: 60%" align = "right">
+			<div ><%=image_tag("login Logo.png",:size => "400x220" ) %></div>
+		</td>
+	<td>
+		<div>
+			<div ><%=image_tag("login.png",:size => "400x220" ) %></div>
+			<%= simple_form_for(:user, :url => session_create_path) do |f| %>
+			  <div class="form-inputs" >
+			    <%= f.input :login, :required => false, :label => false, :autofocus => true,:placeholder => "User ID" ,:input_html => {:style=> 'width: 373px;height: 44px'} %> 
+			    
+			    <%= f.input :password, :required => false,:label => false, :placeholder => "password",:input_html => {:style=> 'width: 373px;height: 44px'} %>
+			  </div>
+			  <div>
+			    <%= f.button :submit, "Sign in", :class=> "btn btn-large btn-primary" %>
+			  </div>
+			<% end %>
+		</div>
+	</td>
+	</tr>
+</table>
