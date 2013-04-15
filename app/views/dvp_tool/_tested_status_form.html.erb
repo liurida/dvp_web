@@ -3,7 +3,8 @@
                     :html => {:class => 'form-horizontal inline', :style => "margin:0;"}
                      ) do |f| %>
   <%= f.input_field :tested_status, :collection => [['Pass','Pass'], ['Fail','Fail']],
-    as: :radio_buttons,  :item_wrapper_class => 'inline'  %>
+    as: :radio_buttons,  :item_wrapper_class => 'inline',
+     :item_wrapper_class => 'inline', :disabled => disable_except('TESTER','CTOM') %>
 <% end %>
 </small
 

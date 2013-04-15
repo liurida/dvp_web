@@ -4,7 +4,7 @@ module DvpToolHelper
     if t_type == 'ec'
       t_study = link_to obj.dvp.study.name, show_study_path(obj.dvp.study)
       t_dvp = link_to obj.dvp.name, show_dvp_path(obj.dvp)
-      t_ec = obj
+      t_ec = obj.to_s
     elsif t_type == 'dvp'
       t_study = link_to obj.study.name, show_study_path(obj.study)
       t_dvp = link_to obj.name, show_dvp_path(obj)
@@ -43,26 +43,58 @@ module DvpToolHelper
     col_name['ctt'] = %w(name description check_method)
     col_name['ctom'] =col_name['ctt'] + %w(reviewer proc_name)
     col_name['cda'] = col_name['ctom'] + %w(programmed_status tested_status)
+    col_name['tester'] = col_name['cda']
+    col_name['all'] = col_name['cda']
     return col_name[view_name]
   end
 
-  def disable_except(role_list)
-    if current_user and current_user.login == 'i0040679'
-      false
-    else
+  def disable_except(*role_list)
+    role_list = role_list.map{|i| i.upcase}.sort
+    user_roles = current_user.study_members(:study => @dvp.study).map {|item| item.role.blank? ? nil : item.role.name }.sort
+    p role_list
+    p user_roles
+    if user_roles - role_list == user_roles
       true
+    else
+      false
     end
   end
 
 
   def show_col_value(obj, key)
-    if key == 'programmed_status'
+    if key == 'programmed_status' and session[:ec_view]=='cda'
       render :partial => "programmed_status_form", :locals => {:ec => obj}
-    elsif key == 'tested_status'
+    elsif key == 'tested_status' and session[:ec_view]=='tester'
       render :partial => "tested_status_form", :locals => {:ec => obj}
     else
       obj[key]
     end
   end
 
+  def comment_filter(obj)
+    if !params[:comment_to].blank? and ['ctom','cda','tester'].include? params[:comment_to]
+      where_c = "%#{params[:comment_to]}%"
+      results = obj.comments.where("comment like ?", where_c).where("created_at > ?", Date.today-1.month).reverse
+    else
+      results = obj.comments.where("created_at > ?", Date.today-1.month).reverse
+    end
+  end
+
+  def ec_editable?
+    if current_user.studies.include? @dvp.study
+      true
+    else
+      false
+    end
+  end
+
+  def ec_destroyable?
+    if ec_editable? and
+        current_user.study_members(:study => @dvp.study).map {|item| item.role.blank? ? nil : item.role.name  }.include? 'CTOM'
+      true
+    else
+      false
+    end
+
+  end
 end

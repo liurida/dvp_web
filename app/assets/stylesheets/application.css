@@ -11,5 +11,7 @@
  *= require_self
  *= require twitter/bootstrap
  *= require font-awesome
+ *= require home
+ *= require extra
  */
 

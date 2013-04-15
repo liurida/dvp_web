@@ -14,10 +14,8 @@ gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -45,3 +43,8 @@ gem 'thin'
 gem 'net-ldap'
 gem "font-awesome-rails"
 gem "ransack" # advance search
+
+group :development do
+  gem 'rails-dev-boost', :git => 'http://github.com/thedarkone/rails-dev-boost.git'
+end
+gem 'acts_as_commentable', '3.0.1'

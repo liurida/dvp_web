@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403031845) do
+ActiveRecord::Schema.define(:version => 20130413070348) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "domains", :force => true do |t|
     t.string   "name"
@@ -54,12 +68,39 @@ ActiveRecord::Schema.define(:version => 20130403031845) do
   add_index "ec_items", ["dvp_id"], :name => "index_ec_items_on_dvp_id"
   add_index "ec_items", ["study_id"], :name => "index_ec_items_on_study_id"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "studies", :force => true do |t|
     t.string   "name"
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "study_members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "study_id"
+  end
+
+  add_index "study_members", ["role_id"], :name => "index_study_members_on_role_id"
+  add_index "study_members", ["user_id"], :name => "index_study_members_on_user_id"
+
+  create_table "teams", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "teams", ["role_id"], :name => "index_teams_on_role_id"
+  add_index "teams", ["user_id"], :name => "index_teams_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

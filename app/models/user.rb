@@ -9,7 +9,13 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   # disable devise, no password needs
+  has_many :study_members
+  has_many :studies, :through => :study_members
   attr_accessible :login, :email, :username, :ldap_entries
+
+  def to_s
+      self.username
+  end
 
   def ldap_info
     #load Marshaled obj
@@ -35,7 +41,7 @@ class User < ActiveRecord::Base
         #p ldap_entry
         #ldap.mail
         user.email = ldap_entry.mail.first
-        user.username = ldap_entry.displayname.first
+        user.username = "#{ldap_entry.givenname.first} #{ldap_entry.sn.first}"
         user.ldap_entries = Marshal.dump(ldap_entry)
         user.save
         user

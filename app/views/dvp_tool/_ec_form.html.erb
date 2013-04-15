@@ -19,12 +19,13 @@
         <%= f.input :description , as: :text , :input_html => {:class => 'input-xlarge', :rows => 4 } %>
       </td>
       <td>
+
+        <%= f.input :proc_name %>
         <%= f.input :restriction %>
         <%= f.input :message, :hint => raw("<small>Query message</small>") %>
         <%= f.input :reviewer, as: :select, collection: @ec.list_reviewer %>
       </td>
       <td>
-        <%= f.input :proc_name %>
         <%= f.input :programmed_status %>
         <%= f.input :tested_status %>
         <%= raw("<span class='label label-warning'>Has been removed</span>") if @ec.removed %>
