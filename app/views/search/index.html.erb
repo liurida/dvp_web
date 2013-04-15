@@ -2,6 +2,6 @@
   No record
 <% else %>
 <% @record.each do |item| %>
-  <%= item.name %>
+  <%= link_to item.name, show_study_path(item) %>
 <% end %>
 <% end %>

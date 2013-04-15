@@ -1,0 +1,31 @@
+<small>
+  <table class='table table-bordered'>
+    <tr>
+      <th> Basic Information <small class="muted"> CTT </small> </th>
+      <th> Implimentation <small class="muted"> CTOM, CDA </small>  </th>
+      <th> Testing <small class="muted"> CDA, Tester </small> </th>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <p><strong>Domain</strong>:           <code><%= @ec.domain %></code> </p>
+          <p><strong>Name</strong>:              <code><%= @ec.name %></code> </p>
+          <p><strong>CheckMthod</strong>:        <code><%= @ec.check_method %></code> </p>
+          <p><strong>Description</strong>:       <code><%= @ec.description  %></code> </p>
+        </div>
+      </td>
+      <td>
+        <p><strong>Procedure Name</strong>: <code><%= @ec.proc_name  %></code></p>
+        <p><strong>Query Message</strong>: <code><%= @ec.message %></code></p>
+        <p><strong>Reviewer</strong>: <code><%= @ec.reviewer %></code></p>
+      </td>
+      <td>
+        <p><strong>Programming Status</strong>: <code><%= @ec.programmed_status %></code></p>
+        <p><strong>Tesing Status</strong>: <code><%= @ec.tested_status %></code></p>
+        <p><strong>Removed YN</strong>: <code><%= @ec.removed %></code></p>
+      </td>
+    </tr>
+  </table>
+</small>
+
+

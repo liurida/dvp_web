@@ -1,0 +1,30 @@
+
+<!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn btn-mini btn-primary" data-toggle="modal">Join Study</a>
+</p>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel">Join Study <%= @study %> </h4>
+	</div>
+	<%= simple_form_for @study_member do |f| %>
+		<div class="modal-body">
+
+			<%= f.association :role  %>
+			<%= f.input :user_id, as: :hidden,  :input_html =>{:value => current_user.id }  %>
+			<%= f.input :study_id, as: :hidden, :input_html =>{:value => @study_member.study.id} %>
+
+			<input type='hidden' name="next_url" value="<%= request.url %>">
+
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+			<%= f.button :submit, "Submit", :class => 'btn, btn-primary'  %>
+		</div>
+	<% end  %>
+</div>
+<script type="text/javascript" charset="utf-8">
+	$('#myModal').modal('hide')
+</script>

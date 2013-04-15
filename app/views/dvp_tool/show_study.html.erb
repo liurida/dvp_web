@@ -1,13 +1,42 @@
 <%= breadcrumb('study', @study) %>
-
-<h4>DVPs for study <%= @study.name %> </h4>
-<!-- <%= render  :template => "studies/show.html" %> -->
-<% if !@study.dvps.empty? %>
-  <% @study.dvps.each do |dvp| %>
-    <%= link_to dvp.name, show_dvp_path(dvp) %>
-    <small class='muted'>Last upated at <%=l dvp.updated_at %>   </small>
+<div class="well">
+  Work Space:
+  <!-- <%= render  :template => "studies/show.html" %> -->
+  <% if !@study.dvps.empty? %>
+    <% @study.dvps.each do |dvp| %>
+      <%= link_to raw("#{dvp.name}<i class='icon-pencil'></i>"), show_dvp_path(dvp) %>
+      <small class='muted'>Last upated at <%= time_ago_in_words(dvp.updated_at) %> ago   </small>
+    <% end %>
+  <% else %>
+    Create New DVP
   <% end %>
-<% else %>
-  Create New DVP
-<% end %>
+</div>
+<div class="row-fluid">
+<div class="span4 " >
+  <h5>Last 5 snapshots</h5>
+  <a href="#">Generate new snapshot </a>
+</div>
+
+<div class="span4 ">
+  <h5>Useful links</h5>
+
+</div>
+
+<div class="span4 ">
+  Study Members
+  <%= render "join_study" %>
+  <%= render 'study_member_list' %>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
 

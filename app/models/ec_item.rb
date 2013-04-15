@@ -1,4 +1,6 @@
 class EcItem < ActiveRecord::Base
+  acts_as_commentable
+
   REVIEWER =%w(DM_REVIEW INV_REVIEW CRA_REVIEW)
   CHECK_METHOD = %w(AUTO MANUAL)
   belongs_to :dvp
